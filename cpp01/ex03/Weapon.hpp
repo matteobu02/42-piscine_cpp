@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 23:28:18 by mbucci            #+#    #+#             */
-/*   Updated: 2022/03/16 23:33:51 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/03/17 14:59:27 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 class Weapon
 {
 	public:
+		Weapon(std::string type);
+
 		std::string	const &getType(void) const;
 		void		setType(std::string type);
 
