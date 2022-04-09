@@ -6,12 +6,13 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:05:58 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/07 12:33:54 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/09 13:13:11 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
+#include <cmath>
 
 //////////////////
 // Constructors //
@@ -37,7 +38,7 @@ Fixed::Fixed(int const n)
 
 Fixed::Fixed(float const n)
 {
-	this->_RawBits = n * (1 << Fixed::_NbBits);
+	this->_RawBits = int(roundf(n * (1 << Fixed::_NbBits)));
 	return ;
 }
 
@@ -54,9 +55,15 @@ Fixed::~Fixed(void)
 // Getters / Setters //
 ///////////////////////
 
-int	Fixed::getRawBits(void) const
+int		Fixed::getRawBits(void) const
 {
 	return (this->_RawBits);
+}
+
+void	Fixed::setRawBits(int n)
+{
+	this->_RawBits = n;
+	return ;
 }
 
 //////////////////////////
@@ -101,22 +108,34 @@ bool	Fixed::operator!= (Fixed const & rhs) const
 
 Fixed	Fixed::operator+ (Fixed const & rhs) const
 {
-	return (Fixed(this->getRawBits() + rhs.getRawBits()));
+	Fixed	tmp;
+
+	tmp.setRawBits(this->getRawBits() + rhs.getRawBits());
+	return (tmp);
 }
 
 Fixed	Fixed::operator- (Fixed const & rhs) const
 {
-	return (Fixed(this->getRawBits() - rhs.getRawBits()));
+	Fixed	tmp;
+
+	tmp.setRawBits(this->getRawBits() - rhs.getRawBits());
+	return (tmp);
 }
 
 Fixed	Fixed::operator* (Fixed const & rhs) const
 {
-	return (Fixed(this->getRawBits() * rhs.getRawBits()));
+	Fixed	tmp;
+
+	tmp.setRawBits(this->getRawBits() * rhs.getRawBits() >> Fixed::_NbBits);
+	return (tmp);
 }
 
 Fixed	Fixed::operator/ (Fixed const & rhs) const
 {
-	return (Fixed(this->getRawBits() / rhs.getRawBits()));
+	Fixed	tmp;
+
+	tmp.setRawBits(this->getRawBits() * (1 << Fixed::_NbBits) / rhs.getRawBits());
+	return (tmp);
 }
 
 Fixed	& Fixed::operator++ (void)

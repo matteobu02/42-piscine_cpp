@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 13:11:48 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/07 19:31:01 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/09 13:56:33 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ class Point
 		~Point(void);
 
 		// Setters / Getters
-		Fixed	getX(void) const;
-		Fixed	getY(void) const;
+		Fixed const	getX(void) const;
+		Fixed const	getY(void) const;
 
 		// Overloaded Operators
 		Point	& operator= (Point const & rhs);

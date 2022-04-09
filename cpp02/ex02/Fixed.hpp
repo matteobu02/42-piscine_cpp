@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:34:22 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/07 12:18:06 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/09 13:07:09 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class Fixed
 
 		// Getters / Setters
 		int		getRawBits(void) const;
+		void	setRawBits(int n);
 
 		// Overloaded operators
 		Fixed	& operator= (Fixed const & rhs);

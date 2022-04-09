@@ -6,13 +6,14 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 21:05:13 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/05 00:24:13 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/09 12:06:43 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 #include <fstream>
+#include <cmath>
 
 //////////////////
 // Constructors //
@@ -35,7 +36,7 @@ Fixed::Fixed(int x)
 Fixed::Fixed(float const x)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->_RawBits = x * (1 << Fixed::_NbBits);
+	this->_RawBits = int(roundf(x * (1 << Fixed::_NbBits)));
 	return ;
 }
 

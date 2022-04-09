@@ -1,4 +1,4 @@
-NAME		=	test
+NAME		=	a.out
 
 CPP			=	c++
 
@@ -16,13 +16,13 @@ all:		$(NAME)
 			$(CPP) $(CPPFLAGS) -c $< -o $(<:.cpp=.o)
 
 $(NAME):	$(OBJS)
-			$(CPP) $(CPPFLAGS) $(OBJS)
+			$(CPP) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 			rm -rf $(OBJS)
 
 fclean:		clean
-			rm -rf a.out
+			rm -rf $(NAME)
 
 re:			fclean all
 
