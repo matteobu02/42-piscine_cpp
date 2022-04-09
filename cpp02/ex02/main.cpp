@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:24:11 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/09 13:31:05 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/09 15:01:41 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(void)
 
 	std::cout << "max(a, b) = " << Fixed::max(a, b) << std::endl;
 
-	std::cout << "My tests: " << std::endl << std::endl;
+	std::cout << std::endl << "My tests: " << std::endl;
 
 	Fixed	c;
 	std::cout << "c = " << c << std::endl;
