@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 22:17:28 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/11 12:05:27 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/11 14:34:58 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ ClapTrap::ClapTrap(ClapTrap const & cpy)
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << this->getName() << " has been destroyed" << std::endl;
+	std::cout << "ClapTrap: " << this->getName() << " has been destroyed" << std::endl;
 	return ;
 }
 
@@ -122,14 +122,19 @@ ClapTrap	& ClapTrap::operator= (ClapTrap const & rhs)
 
 void	ClapTrap::attack(std::string const & target)
 {
-	if (this->getEP())
-	{
-		this->setEP(this->getEP() - 1);
-		std::cout << "ClapTrap " << this->getName() << " attacks " << target;
-		std::cout << ", causing " << this->getAD() << " points of damage!" << std::endl;
-	}
+	if (this->getHP() <= 0)
+		std::cout << "ClapTrap: " << this->getName() << " is dead so it can't perform any action..." << std::endl;
 	else
-		std::cout << this->getName() << " doesn't have any ep left..." << std::endl;
+	{
+		if (this->getEP())
+		{
+			this->setEP(this->getEP() - 1);
+			std::cout << "ClapTrap: " << this->getName() << " attacks " << target;
+			std::cout << ", causing " << this->getAD() << " points of damage!" << std::endl;
+		}
+		if (!this->getEP())
+			std::cout << "ClapTrap: " << this->getName() << " doesn't have any ep left..." << std::endl;
+	}
 	return ;
 }
 
@@ -137,17 +142,17 @@ void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->getHP() <= 0)
 	{
-		std::cout << "ClapTrap " << this->getName() << " is already dead" << std::endl;
+		std::cout << "ClapTrap: " << this->getName() << " is already dead" << std::endl;
 		return ;
 	}
 	
 	this->setHP(this->getHP() - amount);
 	
 	if (this->getHP() <= 0)
-		std::cout << "ClapTrap " << this->getName() << " just died" << std::endl;
+		std::cout << "ClapTrap: " << this->getName() << " just died" << std::endl;
 	else
 	{
-		std::cout << "ClapTrap " << this->getName() << " is now at ";
+		std::cout << "ClapTrap: " << this->getName() << " is now at ";
 		std::cout << this->_hp << " hp..." << std::endl;
 
 	}
@@ -156,14 +161,19 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
+	if (this->getHP() <= 0)
+	{
+		std::cout << "ClapTrap: " << this->getName() << " is dead so it can't perform any action..." << std::endl;
+		return ;
+	}
 	if (this->getEP())
 	{
 		this->setHP(this->getHP() + amount);
 		this->setEP(this->getEP() - 1);
-		std::cout << "ClapTrap " << this->getName() << " is now at " << this->getHP();
+		std::cout << "ClapTrap: " << this->getName() << " is now at " << this->getHP();
 		std::cout << " hp and has " << this->getEP() << " ep left" << std::endl;
 	}
 	else
-		std::cout << this->getName() << " doesn't have any ep left..." << std::endl;
+		std::cout << "ClapTrap: " << this->getName() << " doesn't have any ep left..." << std::endl;
 	return ;
 }
