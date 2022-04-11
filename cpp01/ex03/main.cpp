@@ -6,13 +6,14 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:53:10 by mbucci            #+#    #+#             */
-/*   Updated: 2022/03/17 17:44:54 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/11 14:01:54 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
+#include <iostream>
 
 int	main(void)
 {
