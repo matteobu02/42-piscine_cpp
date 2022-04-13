@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:05:58 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/09 13:13:11 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/12 16:22:52 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,12 +177,12 @@ Fixed	& Fixed::min(Fixed & f1, Fixed & f2)
 
 Fixed const	& Fixed::min(Fixed const & f1, Fixed const & f2)
 {
-	return (f1 <= f2 ? f1 : f2);
+	return (f1.getRawBits() <= f2.getRawBits() ? f1 : f2);
 }
 
 Fixed	& Fixed::max(Fixed & f1, Fixed & f2)
 {
-	return (f1 >= f2 ? f1 : f2);
+	return (f1.getRawBits() >= f2.getRawBits() ? f1 : f2);
 }
 
 Fixed const	& Fixed::max(Fixed const & f1, Fixed const & f2)

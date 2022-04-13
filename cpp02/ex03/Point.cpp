@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 13:17:52 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/09 14:13:18 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/13 12:48:44 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,17 @@
 // Constructors //
 //////////////////
 
-Point::Point(void)
-	: _x(Fixed(0)), _y(Fixed(0))
+Point::Point(void) : _x(Fixed(0)), _y(Fixed(0))
 {
 	return ;
 }
 
-Point::Point(float const x, float const y)
-	: _x(Fixed(x)), _y(Fixed(y))
+Point::Point(float const x, float const y) : _x(Fixed(x)), _y(Fixed(y))
 {
 	return ;
 }
 
-Point::Point(Point const & cpy)
-	: _x(cpy._x), _y(cpy._y)
+Point::Point(Point const & cpy) : _x(cpy._x), _y(cpy._y)
 {
 	return ;
 }
