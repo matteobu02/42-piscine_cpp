@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 19:22:37 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 12:47:05 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/11 12:08:48 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/15 12:47:39 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SCRAVTRAP_HPP
+#define SCRAVTRAP_HPP
+
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include <iostream>
 #include <string>
 
-int	main(void)
+class ScavTrap : public ClapTrap
 {
-	ClapTrap	clap("Augustin");
-	ScavTrap	scrav("Corentin");
+	public:
+		// Constructors
+		ScavTrap(void);
+		ScavTrap(std::string name);
+		ScavTrap(ScavTrap const & cpy);
 
-	clap.attack("Corentin");
-	scrav.takeDamage(clap.getAD());
+		// Destructors
+		~ScavTrap(void);
 
-	scrav.guardGate();
-	scrav.attack("Augustin");
-	clap.takeDamage(scrav.getAD());
+		// Overloaded Operators
+		ScavTrap	& operator= (ScavTrap const & rhs);
 
-	clap.attack("Corentin");
-	scrav.takeDamage(clap.getAD());
-	scrav.beRepaired(5);
+		// Member Functions
+		void	attack(std::string const & target);
+		void	guardGate(void) const;
+};
 
-	return (0);
-}
+#endif

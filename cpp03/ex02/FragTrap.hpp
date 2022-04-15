@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 19:22:37 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 12:47:05 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/12 13:05:19 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/13 16:45:36 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
+
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include <iostream>
 #include <string>
 
-int	main(void)
+class FragTrap : public ClapTrap
 {
-	ClapTrap	clap("Augustin");
-	ScavTrap	scrav("Corentin");
+	public:
+		// Constructors
+		FragTrap(void);
+		FragTrap(std::string name);
+		FragTrap(FragTrap const & cpy);
 
-	clap.attack("Corentin");
-	scrav.takeDamage(clap.getAD());
+		// Destructors
+		~FragTrap(void);
 
-	scrav.guardGate();
-	scrav.attack("Augustin");
-	clap.takeDamage(scrav.getAD());
+		// Overloaded Operators
+		FragTrap	& operator= (FragTrap const & rhs);
 
-	clap.attack("Corentin");
-	scrav.takeDamage(clap.getAD());
-	scrav.beRepaired(5);
+		// Member Functions
+		void	highFivesGuys(void) const;
+};
 
-	return (0);
-}
+#endif

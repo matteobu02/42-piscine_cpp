@@ -5,31 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 19:22:37 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 12:47:05 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/12 15:36:26 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/15 13:05:46 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 #include <iostream>
-#include <string>
 
 int	main(void)
 {
-	ClapTrap	clap("Augustin");
-	ScavTrap	scrav("Corentin");
+	ClapTrap	ct("vieux");
+	ScavTrap	st("papa");
+	FragTrap	ft("maman");
+	DiamondTrap	dt("baby");
 
-	clap.attack("Corentin");
-	scrav.takeDamage(clap.getAD());
+	std::cout << std::endl;
+	dt.whoAmI();
+	
+	ct.attack("papa");
+	st.takeDamage(ct.getAD());
 
-	scrav.guardGate();
-	scrav.attack("Augustin");
-	clap.takeDamage(scrav.getAD());
+	ft.attack("papa");
+	st.takeDamage(ft.getAD());
 
-	clap.attack("Corentin");
-	scrav.takeDamage(clap.getAD());
-	scrav.beRepaired(5);
+	st.guardGate();
+	st.attack("vieux");
 
+	ft.highFivesGuys();
+
+	dt.attack("maman");
+	ft.takeDamage(dt.getAD());
+	std::cout << std::endl;
 	return (0);
 }

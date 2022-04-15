@@ -1,45 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScravTrap.cpp                                      :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 12:08:09 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/11 13:29:28 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/15 12:47:22 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScravTrap.hpp"
+#include "ScavTrap.hpp"
 #include <iostream>
 
 //////////////////
 // Constructors //
 //////////////////
 
-ScravTrap::ScravTrap(void) : ClapTrap()
+ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	this->_hp = 100;
 	this->_ep = 50;
 	this->_ad = 20;
 	
-	std::cout << "ScravTrap: \"\" has been created." << std::endl;
+	std::cout << "ScavTrap: \"\" has been created." << std::endl;
 
 	return ;
 }
 
-ScravTrap::ScravTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	this->_hp = 100;
 	this->_ep = 50;
 	this->_ad = 20;
 
-	std::cout << "ScravTrap: " << this->_name << " has been created." << std::endl;
+	std::cout << "ScavTrap: " << this->_name << " has been created." << std::endl;
 
 	return ;
 }
 
-ScravTrap::ScravTrap(ScravTrap const & cpy)
+ScavTrap::ScavTrap(ScavTrap const & cpy)
 {
 	this->_name = cpy.getName();
 	this->_hp = cpy.getHP();
@@ -54,9 +54,9 @@ ScravTrap::ScravTrap(ScravTrap const & cpy)
 // Destructors //
 /////////////////
 
-ScravTrap::~ScravTrap(void)
+ScavTrap::~ScavTrap(void)
 {
-	std::cout << "ScravTrap: " << this->getName() << " was just destroyed." << std::endl;
+	std::cout << "ScavTrap: " << this->getName() << " was just destroyed." << std::endl;
 	return ;
 }
 
@@ -64,7 +64,7 @@ ScravTrap::~ScravTrap(void)
 // Overloaded Operators //
 //////////////////////////
 
-ScravTrap	& ScravTrap::operator= (ScravTrap const & cpy)
+ScavTrap	& ScavTrap::operator= (ScavTrap const & cpy)
 {
 	this->setName(cpy.getName());
 	this->setHP(cpy.getHP());
@@ -78,12 +78,12 @@ ScravTrap	& ScravTrap::operator= (ScravTrap const & cpy)
 // Member Functions //
 //////////////////////
 
-void	ScravTrap::attack(std::string const & target)
+void	ScavTrap::attack(std::string const & target)
 {
 	if (this->getEP())
 	{
 		this->setEP(this->getEP() - 1);
-		std::cout << "ScravTrap: " << this->getName() << " attacks " << target;
+		std::cout << "ScavTrap: " << this->getName() << " attacks " << target;
 		std::cout << ", causing " << this->getAD() << " points of damage!" << std::endl;
 	}
 	else
@@ -91,8 +91,8 @@ void	ScravTrap::attack(std::string const & target)
 	return ;
 }
 
-void	ScravTrap::guardGate(void) const
+void	ScavTrap::guardGate(void) const
 {
-	std::cout << "ScravTrap: entered \"Gate Keeper\" mode." << std::endl;
+	std::cout << "ScavTrap: entered \"Gate Keeper\" mode." << std::endl;
 	return ;
 }

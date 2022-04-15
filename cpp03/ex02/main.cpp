@@ -5,31 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 19:22:37 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 12:47:05 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/12 15:36:26 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/15 12:45:30 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 #include <iostream>
-#include <string>
 
 int	main(void)
 {
-	ClapTrap	clap("Augustin");
-	ScavTrap	scrav("Corentin");
+	ClapTrap	clap("clap2000");
+	ScavTrap	scrav("scrav2000");
+	FragTrap	frag("frag2000");
 
-	clap.attack("Corentin");
+	clap.attack("scrav2000");
 	scrav.takeDamage(clap.getAD());
 
+	frag.attack("scrav2000");
+	scrav.takeDamage(frag.getAD());
+
+	scrav.beRepaired(frag.getAD() / 2);
 	scrav.guardGate();
-	scrav.attack("Augustin");
-	clap.takeDamage(scrav.getAD());
 
-	clap.attack("Corentin");
-	scrav.takeDamage(clap.getAD());
-	scrav.beRepaired(5);
+	frag.attack("clap2000");
+	clap.takeDamage(frag.getAD());
+	
+	frag.highFivesGuys();
 
 	return (0);
 }

@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScravTrap.hpp                                      :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 12:08:48 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/11 13:13:38 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/12 13:05:19 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/14 14:31:03 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCRAVTRAP_HPP
-#define SCRAVTRAP_HPP
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
 #include "ClapTrap.hpp"
 #include <string>
 
-class ScravTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 	public:
 		// Constructors
-		ScravTrap(void);
-		ScravTrap(std::string name);
-		ScravTrap(ScravTrap const & cpy);
+		FragTrap(void);
+		FragTrap(std::string name);
+		FragTrap(FragTrap const & cpy);
 
 		// Destructors
-		~ScravTrap(void);
+		~FragTrap(void);
 
 		// Overloaded Operators
-		ScravTrap	& operator= (ScravTrap const & rhs);
+		FragTrap	& operator= (FragTrap const & rhs);
 
 		// Member Functions
-		void	attack(std::string const & target);
-		void	guardGate(void) const;
+		void	highFivesGuys(void) const;
 };
 
 #endif
