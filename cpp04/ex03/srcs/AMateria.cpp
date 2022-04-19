@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 01:43:33 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/17 17:52:50 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/19 15:26:46 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,6 @@ AMateria	& AMateria::operator= (AMateria const & rhs)
 //////////////////////
 // Member Functions //
 //////////////////////
-
-AMateria	* AMateria::clone(void) const
-{
-	return (new AMateria());
-}
 
 void		AMateria::use(ICharacter & target)
 {

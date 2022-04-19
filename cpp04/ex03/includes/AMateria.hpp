@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 18:56:35 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/16 19:03:23 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/19 15:26:50 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class AMateria
 		AMateria	& operator= (AMateria const & rhs);
 
 		// Member Functions
-		virtual AMateria	* clone(void) const;
+		virtual AMateria	* clone(void) const = 0;
 		virtual void		use(ICharacter & target);
 
 	protected:

@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 14:32:02 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 23:39:37 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/19 15:27:34 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Cat : public Animal
 		Cat	& operator= (Cat const & rhs);
 
 		// Member Functions
-		virtual void	makeSound(void) const;
+		void	makeSound(void) const;
 
 	private:
 		Brain	* _brain;
