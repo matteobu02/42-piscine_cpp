@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 14:24:43 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 21:17:25 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/15 14:32:02 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/16 18:49:57 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
-#include <string>
+#include "AAnimal.hpp"
+#include "Brain.hpp"
 
-class Animal
+class Cat : public AAnimal
 {
 	public:
 		// Constructors
-		Animal(void);
-		Animal(std::string const & type);
-		Animal(Animal const & cpy);
-		
+		Cat(void);
+		Cat(Cat const & cpy);
+
 		// Destructors
-		~Animal(void);
+		~Cat(void);
 
 		// Getters - Setters
-		std::string getType(void) const;
-		void		setType(std::string const & type);
+		Brain	* getBrain(void) const;
 
 		// Overloaded Operators
-		Animal	& operator= (Animal const & rhs);
+		Cat	& operator= (Cat const & rhs);
 
-		// Member Functions 
+		// Member Functions
 		virtual void	makeSound(void) const;
 
 	private:
-		std::string	_type;
+		Brain	* _brain;
 };
 
 #endif

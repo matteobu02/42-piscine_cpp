@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 15:41:36 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 20:59:02 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/16 19:13:27 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include <iostream>
 
 //////////////////
 // Constructors //
 //////////////////
 
-Animal::Animal(void) : _type("undefined")
+AAnimal::AAnimal(void) : _type("undefined")
 {
-	std::cout << "Animal: un nouvel animal de type indéfini est arrivé" << std::endl;
+	std::cout << "AAnimal: un nouvel animal de type indéfini est arrivé" << std::endl;
 	return ;
 }
 
-Animal::Animal(std::string const & type) : _type(type)
+AAnimal::AAnimal(std::string const & type) : _type(type)
 {
-	std::cout << "Animal: un nouveau " << type << " est arrivé" << std::endl;
+	std::cout << "AAnimal: un nouveau " << type << " est arrivé" << std::endl;
 	return ;
 }
 
-Animal::Animal(Animal const & cpy) : _type(cpy.getType())
+AAnimal::AAnimal(AAnimal const & cpy) : _type(cpy.getType())
 {
-	std::cout << "Animal: un " << cpy.getType() << " vient d'etre copié" << std::endl;
+	std::cout << "AAnimal: un " << cpy.getType() << " vient d'etre copié" << std::endl;
 	return ;
 }
 
@@ -39,9 +39,9 @@ Animal::Animal(Animal const & cpy) : _type(cpy.getType())
 // Destructors //
 /////////////////
 
-Animal::~Animal(void)
+AAnimal::~AAnimal(void)
 {
-	std::cout << "Animal: notre cher animal de type \"" << this->getType() << "\" est mort :((" << std::endl;
+	std::cout << "AAnimal: notre cher animal de type \"" << this->getType() << "\" est mort :((" << std::endl;
 	return ;
 }
 
@@ -49,12 +49,12 @@ Animal::~Animal(void)
 // Getters / Setters //
 ///////////////////////
 
-std::string	Animal::getType(void) const
+std::string	AAnimal::getType(void) const
 {
 	return (this->_type);
 }
 
-void		Animal::setType(std::string const & type)
+void		AAnimal::setType(std::string const & type)
 {
 	this->_type = type;
 	return ;
@@ -64,18 +64,8 @@ void		Animal::setType(std::string const & type)
 // Overloaded Operators //
 //////////////////////////
 
-Animal	& Animal::operator= (Animal const & rhs)
+AAnimal	& AAnimal::operator= (AAnimal const & rhs)
 {
 	this->setType(rhs.getType());
 	return (*this);
-}
-
-//////////////////////
-// Member Functions //
-//////////////////////
-
-void	Animal::makeSound(void) const
-{
-	std::cout << "Animal: ..............................." << std::endl;
-	return ;
 }

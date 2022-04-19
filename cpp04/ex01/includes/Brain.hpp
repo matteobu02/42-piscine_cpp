@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 14:24:43 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 21:17:25 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/15 21:56:31 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/16 18:12:13 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
 #include <string>
 
-class Animal
+class Brain
 {
 	public:
 		// Constructors
-		Animal(void);
-		Animal(std::string const & type);
-		Animal(Animal const & cpy);
-		
+		Brain(void);
+		Brain(Brain const & cpy);
+
 		// Destructors
-		~Animal(void);
+		~Brain(void);
 
 		// Getters - Setters
-		std::string getType(void) const;
-		void		setType(std::string const & type);
+		std::string	getIdeas(int index) const;
 
 		// Overloaded Operators
-		Animal	& operator= (Animal const & rhs);
-
-		// Member Functions 
-		virtual void	makeSound(void) const;
-
+		Brain	& operator= (Brain const & rhs);
+	
 	private:
-		std::string	_type;
+		std::string	_ideas[100];
 };
 
 #endif

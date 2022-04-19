@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.cpp                                       :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 21:31:22 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 21:37:40 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/15 16:06:00 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/16 17:40:33 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongCat.hpp"
+#include "Cat.hpp"
 #include <iostream>
 
 //////////////////
 // Constructors //
 //////////////////
 
-WrongCat::WrongCat(void) : WrongAnimal("cat")
+Cat::Cat(void) : Animal("cat")
 {
-	std::cout << "WrongCat: a new weird cat is born. Parise him !!" << std::endl;
+	this->_brain = new Brain();
+
+	std::cout << "Cat: a new cat is born. Parise him !!" << std::endl;
+
 	return ;
 }
 
-WrongCat::WrongCat(WrongCat const & cpy) : WrongAnimal(cpy.getType())
+Cat::Cat(Cat const & cpy) : Animal(cpy.getType())
 {
-	std::cout << "WrongCat: a cat just duplicated itself OMG THAT'S SO WEIRD" << std::endl;
+	delete (this->_brain);
+	this->_brain = new Brain(*cpy.getBrain());
+
+	std::cout << "Cat: a cat just duplicated itself OMG" << std::endl;
+
 	return ;
 }
 
@@ -33,18 +40,33 @@ WrongCat::WrongCat(WrongCat const & cpy) : WrongAnimal(cpy.getType())
 // Destructors // 
 /////////////////
 
-WrongCat::~WrongCat(void)
+Cat::~Cat(void)
 {
-	std::cout << "WrongCat: this is a sad day, a kitty just died" << std::endl;
+	delete (this->_brain);
+
+	std::cout << "Cat: this is a sad day, a kitty just died" << std::endl;
+
 	return ;
+}
+
+///////////////////////
+// Getters / Setters //
+///////////////////////
+
+Brain	* Cat::getBrain(void) const
+{
+	return (this->_brain);
 }
 
 //////////////////////////
 // Overloaded Operators //
 //////////////////////////
 
-WrongCat	& WrongCat::operator= (WrongCat const & rhs)
+Cat	& Cat::operator= (Cat const & rhs)
 {
+	delete (this->_brain);
+	this->_brain = new Brain(*rhs.getBrain());
+
 	this->setType(rhs.getType());
 	return (*this);
 }
@@ -53,8 +75,8 @@ WrongCat	& WrongCat::operator= (WrongCat const & rhs)
 // Member Functions //
 //////////////////////
 
-void	WrongCat::makeSound(void) const
+void	Cat::makeSound(void) const
 {
-	std::cout << "WrongCat: WWWWWWWOOOOOOOOOEEEEEEMM" << std::endl;
+	std::cout << "Cat: MEEEEEEOOOWWWWWWWW" << std::endl;
 	return ;
 }

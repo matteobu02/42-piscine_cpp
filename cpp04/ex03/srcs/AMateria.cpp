@@ -1,51 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 16:21:18 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 21:02:06 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/17 01:43:33 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/17 17:52:50 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "AMateria.hpp"
 #include <iostream>
 
 //////////////////
 // Constructors //
 //////////////////
 
-Dog::Dog(void) : Animal("dog")
+AMateria::AMateria(void) : _type("abstract")
 {
-	std::cout << "Dog: a strange dog strated following me wtf.." << std::endl;
-	return ;
 }
 
-Dog::Dog(Dog const & cpy) : Animal(cpy.getType())
+AMateria::AMateria(std::string const & type) : _type(type)
 {
-	std::cout << "Dog: mmmh this new dog is very similar to that other one.." << std::endl;
-	return ;
+}
+
+AMateria::AMateria(AMateria const & cpy) : _type(cpy.getType())
+{
 }
 
 /////////////////
 // Destructors //
 /////////////////
 
-Dog::~Dog(void)
+AMateria::~AMateria(void)
 {
-	std::cout << "Dog: \"the man lost his best friend..\"" << std::endl;
-	return ;
+}
+
+///////////////////////
+// Getters / Setters //
+///////////////////////
+
+std::string const	& AMateria::getType(void) const
+{
+	return (this->_type);
 }
 
 //////////////////////////
 // Overloaded Operators //
 //////////////////////////
 
-Dog	& Dog::operator= (Dog const & rhs)
+AMateria	& AMateria::operator= (AMateria const & rhs)
 {
-	this->setType(rhs.getType());
+	(void)rhs;
 	return (*this);
 }
 
@@ -53,8 +60,13 @@ Dog	& Dog::operator= (Dog const & rhs)
 // Member Functions //
 //////////////////////
 
-void	Dog::makeSound(void) const
+AMateria	* AMateria::clone(void) const
 {
-	std::cout << "Dog: GRRRRRRRGRGRGRRRRR" << std::endl;
+	return (new AMateria());
+}
+
+void		AMateria::use(ICharacter & target)
+{
+	(void)target;
 	return ;
 }

@@ -1,26 +1,27 @@
 NAME		=	test
 
-CC			=	c++
+CPP			=	c++
 
 CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 SRCS		=	main.cpp		\
 				Animal.cpp		\
+				Cat.cpp			\
 				Dog.cpp			\
-				cat.cpp			\
 				WrongAnimal.cpp	\
 				WrongCat.cpp
+
 
 OBJS		=	$(SRCS:.cpp=.o)
 
 
 all:		$(NAME)
 
-.cpp=.o:
-			$(CC) $(CPPFLAGS) -c $< -o $(<:.cpp=.o)
+.cpp.o:
+			$(CPP) $(CPPFLAGS) -c $< -o $(<:.cpp=.o)
 
 $(NAME):	$(OBJS)
-			$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME)
+			$(CPP) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 			rm -rf $(OBJS)

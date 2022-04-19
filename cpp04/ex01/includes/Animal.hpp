@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 14:24:43 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 21:17:25 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/16 18:12:25 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Animal
 		Animal(Animal const & cpy);
 		
 		// Destructors
-		~Animal(void);
+		virtual ~Animal(void);
 
 		// Getters - Setters
 		std::string getType(void) const;

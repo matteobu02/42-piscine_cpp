@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 14:24:43 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 21:17:25 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/15 14:39:50 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/16 12:47:35 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
 #include <string>
 
-class Animal
+class WrongAnimal
 {
 	public:
 		// Constructors
-		Animal(void);
-		Animal(std::string const & type);
-		Animal(Animal const & cpy);
-		
+		WrongAnimal(void);
+		WrongAnimal(std::string const & type);
+		WrongAnimal(WrongAnimal const & cpy);
+
 		// Destructors
-		~Animal(void);
+		~WrongAnimal(void);
 
 		// Getters - Setters
 		std::string getType(void) const;
 		void		setType(std::string const & type);
 
-		// Overloaded Operators
-		Animal	& operator= (Animal const & rhs);
+		// Overloaded Functions
+		WrongAnimal	& operator= (WrongAnimal const & rhs);
 
-		// Member Functions 
-		virtual void	makeSound(void) const;
+		// Member Functions
+		void	makeSound(void) const;
 
 	private:
 		std::string	_type;

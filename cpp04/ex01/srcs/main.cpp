@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 14:32:02 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 21:12:55 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/15 20:39:47 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/16 18:30:55 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
-
 #include "Animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include <iostream>
+#include <new>
 
-class Dog : public Animal
+int	main(void)
 {
-	public:
-		// Constructors
-		Dog(void);
-		Dog(Dog const & cpy);
+	Animal	* biZoo[10];
 
-		// Destructors
-		~Dog(void);
+	for (int i = 0; i < 10; i++)
+	{
+		if (i < 5)
+			biZoo[i] = new Cat;
+		else
+			biZoo[i] = new Dog;
+	}
 
-		// Overloaded Operators
-		Dog	& operator= (Dog const & rhs);
+	std::cout << std::endl;
 
-		// Member Functions
-		virtual void	makeSound(void) const;
-};
+	for (int i = 0; i < 10; i++)
+		std::cout << "animal[" << i << "]: " << biZoo[i]->getType() << std::endl;
 
-#endif
+	std::cout << std::endl;
+
+	for (int i = 0; i < 10; i++)
+		delete (biZoo[i]);
+
+	return (0);
+}

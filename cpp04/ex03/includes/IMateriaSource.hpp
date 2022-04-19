@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 14:32:02 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 21:12:55 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/16 21:25:23 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/17 17:44:43 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef IMATERIASOURCE
+#define IMATERIASOURCE
 
-#include "Animal.hpp"
+#include "AMateria.hpp"
 
-class Dog : public Animal
+class IMateriaSource
 {
 	public:
-		// Constructors
-		Dog(void);
-		Dog(Dog const & cpy);
-
-		// Destructors
-		~Dog(void);
-
-		// Overloaded Operators
-		Dog	& operator= (Dog const & rhs);
-
-		// Member Functions
-		virtual void	makeSound(void) const;
+		virtual ~IMateriaSource(void) {}
+		virtual void		learnMateria(AMateria * m) = 0;
+		virtual AMateria	* createMateria(std::string const & type) = 0;
 };
 
 #endif

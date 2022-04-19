@@ -1,51 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 16:21:18 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 21:02:06 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/17 12:47:35 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/17 15:13:29 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Ice.hpp"
 #include <iostream>
 
 //////////////////
 // Constructors //
 //////////////////
 
-Dog::Dog(void) : Animal("dog")
+Ice::Ice(void) : AMateria("ice")
 {
-	std::cout << "Dog: a strange dog strated following me wtf.." << std::endl;
-	return ;
 }
 
-Dog::Dog(Dog const & cpy) : Animal(cpy.getType())
+Ice::Ice(Ice const & cpy) : AMateria(cpy.getType())
 {
-	std::cout << "Dog: mmmh this new dog is very similar to that other one.." << std::endl;
-	return ;
 }
 
 /////////////////
 // Destructors //
 /////////////////
 
-Dog::~Dog(void)
+Ice::~Ice(void)
 {
-	std::cout << "Dog: \"the man lost his best friend..\"" << std::endl;
-	return ;
 }
 
 //////////////////////////
 // Overloaded Operators //
 //////////////////////////
 
-Dog	& Dog::operator= (Dog const & rhs)
+Ice	& Ice::operator= (Ice const & rhs)
 {
-	this->setType(rhs.getType());
+	(void)rhs;
 	return (*this);
 }
 
@@ -53,8 +47,13 @@ Dog	& Dog::operator= (Dog const & rhs)
 // Member Functions //
 //////////////////////
 
-void	Dog::makeSound(void) const
+AMateria	* Ice::clone(void) const
 {
-	std::cout << "Dog: GRRRRRRRGRGRGRRRRR" << std::endl;
+	return (new Ice());
+}
+
+void		Ice::use(ICharacter & target)
+{
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 	return ;
 }

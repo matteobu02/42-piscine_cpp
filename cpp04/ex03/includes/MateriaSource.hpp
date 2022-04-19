@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 14:24:43 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 21:17:25 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/16 21:31:26 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/17 15:16:54 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef MATERIASOURCE_HPP
+#define MATERIASOURCE_HPP
 
+#include "IMateriaSource.hpp"
+#include "AMateria.hpp"
 #include <string>
 
-class Animal
+class MateriaSource : public IMateriaSource
 {
 	public:
 		// Constructors
-		Animal(void);
-		Animal(std::string const & type);
-		Animal(Animal const & cpy);
-		
-		// Destructors
-		~Animal(void);
+		MateriaSource(void);
+		MateriaSource(MateriaSource const & cpy);
 
-		// Getters - Setters
-		std::string getType(void) const;
-		void		setType(std::string const & type);
+		// Destructors
+		virtual ~MateriaSource(void);
 
 		// Overloaded Operators
-		Animal	& operator= (Animal const & rhs);
+		MateriaSource	& operator= (MateriaSource const & rhs);
 
-		// Member Functions 
-		virtual void	makeSound(void) const;
+		// Member Functions
+		void		learnMateria(AMateria * m);
+		AMateria	* createMateria(std::string const & type);
 
 	private:
-		std::string	_type;
+		AMateria	* _sources[4];
 };
 
 #endif

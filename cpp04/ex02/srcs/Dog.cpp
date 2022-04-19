@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:21:18 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 21:02:06 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/16 18:53:02 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,21 @@
 // Constructors //
 //////////////////
 
-Dog::Dog(void) : Animal("dog")
+Dog::Dog(void) : AAnimal("dog")
 {
+	this->_brain = new Brain();
+
 	std::cout << "Dog: a strange dog strated following me wtf.." << std::endl;
+
 	return ;
 }
 
-Dog::Dog(Dog const & cpy) : Animal(cpy.getType())
+Dog::Dog(Dog const & cpy) : AAnimal(cpy.getType())
 {
+	this->_brain = new Brain();
+
 	std::cout << "Dog: mmmh this new dog is very similar to that other one.." << std::endl;
+
 	return ;
 }
 
@@ -35,8 +41,20 @@ Dog::Dog(Dog const & cpy) : Animal(cpy.getType())
 
 Dog::~Dog(void)
 {
+	delete (this->_brain);
+
 	std::cout << "Dog: \"the man lost his best friend..\"" << std::endl;
+
 	return ;
+}
+
+///////////////////////
+// Getters / Setters //
+///////////////////////
+
+Brain	* Dog::getBrain(void) const
+{
+	return (this->_brain);
 }
 
 //////////////////////////

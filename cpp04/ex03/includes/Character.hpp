@@ -1,43 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 14:24:43 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/15 21:17:25 by mbucci           ###   ########.fr       */
+/*   Created: 2022/04/16 21:15:38 by mbucci            #+#    #+#             */
+/*   Updated: 2022/04/17 15:05:11 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
+#include "ICharacter.hpp"
+#include "AMateria.hpp"
 #include <string>
 
-class Animal
+class Character : public ICharacter
 {
 	public:
 		// Constructors
-		Animal(void);
-		Animal(std::string const & type);
-		Animal(Animal const & cpy);
-		
+		Character(void);
+		Character(std::string name);
+		Character(Character const & cpy);
+
 		// Destructors
-		~Animal(void);
+		virtual ~Character(void);
 
 		// Getters - Setters
-		std::string getType(void) const;
-		void		setType(std::string const & type);
+		std::string const	& getName(void) const;
 
 		// Overloaded Operators
-		Animal	& operator= (Animal const & rhs);
+		Character	& operator= (Character const & rhs);
 
-		// Member Functions 
-		virtual void	makeSound(void) const;
+		// Member Functions
+		void	equip(AMateria * m);
+		void	unequip(int idx);
+		void	use(int idx, ICharacter & target);
 
 	private:
-		std::string	_type;
+		std::string	_name;
+		AMateria	* _inventory[4];
 };
 
 #endif
