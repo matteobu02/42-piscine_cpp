@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 14:32:02 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/19 15:27:34 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/21 15:26:58 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Cat : public Animal
 		Cat(Cat const & cpy);
 
 		// Destructors
-		~Cat(void);
+		virtual ~Cat(void);
 
 		// Getters - Setters
 		Brain	* getBrain(void) const;

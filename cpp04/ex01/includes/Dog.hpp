@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 14:32:02 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/19 15:27:44 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/21 15:27:09 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Dog : public Animal
 		Dog(Dog const & cpy);
 
 		// Destructors
-		~Dog(void);
+		virtual ~Dog(void);
 
 		// Getters - Setters
 		Brain	* getBrain(void) const;
