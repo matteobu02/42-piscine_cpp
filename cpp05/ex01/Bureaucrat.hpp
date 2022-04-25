@@ -6,15 +6,18 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 13:25:41 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/20 16:50:00 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/22 12:45:46 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
+#include "Form.hpp"
 #include <string>
 #include <fstream>
+
+class Form;
 
 class Bureaucrat
 {
@@ -22,15 +25,22 @@ class Bureaucrat
 		// Constructors
 		Bureaucrat(void);
 		Bureaucrat(std::string name, int grade);
-		
+		Bureaucrat(Bureaucrat const &cpy);
+
+		// Destructor
+		virtual ~Bureaucrat(void);
+
 		// Getters - Setters
 		std::string	getName(void) const;
 		int			getGrade(void) const;
 
+		// Overloaded Operator
+		Bureaucrat	&operator= (Bureaucrat const &rhs);
+
 		// Member Functions
 		void	increment(void) throw();
 		void	decrement(void) throw();
-		void	signForm(void) 
+		void	signForm(Form &form) const;
 
 		// Exceptions
 		class GradeTooHighException : public std::exception

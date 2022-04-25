@@ -2,11 +2,16 @@ NAME		=	test
 
 CPP			=	c++
 
-CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98
+CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I $(INCLUDES)
 
-SRCS		=	main.cpp		\
-				Bureaucrat.cpp	\
-				Form.cpp
+INCLUDES	=	./includes
+
+SRCS		=	srcs/main.cpp					\
+				srcs/Bureaucrat.cpp				\
+				srcs/AForm.cpp					\
+				srcs/ShrubberyCreationForm.cpp	\
+				srcs/RobotomyRequestForm.cpp	\
+				srcs/PresidentialPardonForm.cpp
 
 OBJS		=	$(SRCS:.cpp=.o)
 

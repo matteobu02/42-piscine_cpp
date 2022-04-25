@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 15:33:17 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/23 12:38:42 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/25 16:34:44 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include "Bureaucrat.hpp"
 #include <string>
@@ -19,16 +19,16 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	public:
 		// Constructors
-		Form(void);
-		Form(std::string name, int signGrade, int execGrade);
-		Form(Form const &cpy);
+		AForm(void);
+		AForm(std::string name, int signGrade, int execGrade);
+		AForm(AForm const &cpy);
 
 		// Destructor
-		~Form(void);
+		virtual ~AForm(void);
 
 		// Getters
 		std::string	getName(void) const;
@@ -37,20 +37,26 @@ class Form
 		int			getExecGrade(void) const;
 
 		// Overloaded Operators
-		Form	& operator= (Form const &rhs);
+		AForm	&operator= (AForm const &rhs);
 
 		// Member Functions
-		void	beSigned(Bureaucrat bu) throw();
+		void			beSigned(Bureaucrat const &bu) throw();
+		virtual void	execute(Bureaucrat const &executor) const throw() = 0;
 
 		// Exceptions
 		class GradeTooHighException : public std::exception
 		{
-			char const	* what(void) const throw();
+			char const	*what(void) const throw();
 		};
 
 		class GradeTooLowException : public std::exception
 		{
-			char const	* what(void) const throw();
+			char const	*what(void) const throw();
+		};
+
+		class FormNotSignedException : public std::exception
+		{
+			char const	*what(void) const throw();
 		};
 
 	private:
@@ -60,6 +66,6 @@ class Form
 		int const			_execGrade;
 };
 
-std::ostream	& operator<< (std::ostream &o, Form const &rhs);
+std::ostream	& operator<< (std::ostream &o, AForm const &rhs);
 
 #endif

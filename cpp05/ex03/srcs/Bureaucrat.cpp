@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 14:10:35 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/22 12:42:03 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/25 16:24:23 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,24 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 	return ;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &cpy) : _name(cpy._name), _grade(cpy._grade)
+Bureaucrat::Bureaucrat(Bureaucrat const &cpy)
 {
+	this->_name = cpy._name;
+	this->_grade = cpy._grade;
+
+	std::cout << *this << std::endl;
+
+	return ;
 }
 
-/////////////////
-// Destructors //
-/////////////////
+///////////////
+// Destrctor //
+///////////////
 
 Bureaucrat::~Bureaucrat(void)
 {
+	std::cout << "Bureaucrat: " << this->_name << ", destructor called" << std::endl;
+	return ;
 }
 
 ///////////////////////
@@ -65,18 +73,6 @@ std::string	Bureaucrat::getName(void) const
 int			Bureaucrat::getGrade(void) const
 {
 	return (this->_grade);
-}
-
-/////////////////////////
-// Overloaded Operator //
-/////////////////////////
-
-Bureaucrat	& Bureaucrat::operator= (Bureaucrat const &rhs)
-{
-	this->_name = rhs._name;
-	this->_grade = rhs._grade;
-
-	return (*this);
 }
 
 //////////////////////
@@ -115,16 +111,45 @@ void	Bureaucrat::decrement(void) throw()
 	return ;
 }
 
+void	Bureaucrat::signForm(AForm &form) const
+{
+	std::cout << this->getName();
+	if (form.getSigned())
+		std::cout << " signed " << form.getName();
+	else
+	{
+		std::cout << " couldn't sign " << form.getName();
+		std::cout << " because they don't have the appropriate grade.";
+	}
+	std::cout << std::endl;
+	return ;
+}
+
+void	Bureaucrat::executeForm(AForm const &form) const
+{
+	std::cout << this->getName();
+	if (form.getSigned())
+		std::cout << " executed " << form.getName();
+	else
+	{
+		std::cout << " couldn't execute " << form.getName();
+		std::cout << " because they don't have the appropriate grade.";
+	}
+	std::cout << std::endl;
+	return ;
+
+}
+
 ////////////////
 // Exceptions //
 ////////////////
 
-char const	* Bureaucrat::GradeTooHighException::what(void) const throw()
+char const	*Bureaucrat::GradeTooHighException::what(void) const throw()
 {
 	return ("Grade is too high and cannot be increased");
 }
 
-char const	* Bureaucrat::GradeTooLowException::what(void) const throw()
+char const	*Bureaucrat::GradeTooLowException::what(void) const throw()
 {
 	return ("Grade is too low and cannot be decreased");
 }

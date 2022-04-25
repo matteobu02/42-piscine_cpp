@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 14:10:35 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/20 15:30:52 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/23 12:39:57 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,20 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 	return ;
 }
 
+Bureaucrat::Bureaucrat(Bureaucrat const &cpy) : _name(cpy._name), _grade(cpy._grade)
+{
+	std::cout << *this << std::endl;
+	return ;
+}
+
+/////////////////
+// Destructors //
+/////////////////
+
+Bureaucrat::~Bureaucrat(void)
+{
+}
+
 ///////////////////////
 // Getters / Setters //
 ///////////////////////
@@ -53,6 +67,18 @@ std::string	Bureaucrat::getName(void) const
 int			Bureaucrat::getGrade(void) const
 {
 	return (this->_grade);
+}
+
+/////////////////////////
+// Overloaded Operator //
+/////////////////////////
+
+Bureaucrat	& Bureaucrat::operator= (Bureaucrat const &rhs)
+{
+	this->_name = rhs._name;
+	this->_grade = rhs._grade;
+
+	return (*this);
 }
 
 //////////////////////
@@ -87,6 +113,19 @@ void	Bureaucrat::decrement(void) throw()
 	catch (std::exception & e)
 	{
 		std::cerr << this->getName() << "-err: " << e.what() << std::endl;
+	}
+	return ;
+}
+
+void	Bureaucrat::signForm(Form &form) const
+{
+	std::cout << this->getName();
+	if (form.getSigned())
+		std::cout << " signed " << form.getName() << "." << std::endl;
+	else
+	{
+		std::cout << " couldn't sign " << form.getName();
+		std::cout << " because they don't have the appropriate grade." << std::endl;
 	}
 	return ;
 }
