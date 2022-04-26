@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 13:25:41 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/22 12:46:03 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/26 16:09:06 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,18 @@ class Bureaucrat
 		Bureaucrat	&operator= (Bureaucrat const &rhs);
 
 		// Member Functions
-		void	increment(void) throw();
-		void	decrement(void) throw();
+		void	increment(void);
+		void	decrement(void);
 
 		// Exceptions
 		class GradeTooHighException : public std::exception
 		{
-			char const	* what(void) const throw();
+			char const	*what(void) const throw();
 		};
 
 		class GradeTooLowException : public std::exception
 		{
-			char const	* what(void) const throw();
+			char const	*what(void) const throw();
 		};
 
 	private:
