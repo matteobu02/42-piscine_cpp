@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 16:10:28 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/23 12:40:28 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/26 17:11:46 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ Form::Form(std::string name, int signGrade, int execGrade)
 			throw (Form::GradeTooHighException());
 		else
 			std::cout << *this << std::endl;
-	}
-	catch (std::exception & e)
-	{
-		std::cerr << this->getName() << "-err: " << e.what() << std::endl;
 	}
 	return ;
 }
@@ -95,21 +91,14 @@ Form	&Form::operator= (Form const &rhs)
 // Member Functions //
 //////////////////////
 
-void	Form::beSigned(Bureaucrat bu) throw()
+void	Form::beSigned(Bureaucrat const &bu) throw()
 {
-	if (!this->_signed)
+	try
 	{
-		try
-		{
-			if (bu.getGrade() > this->getSignGrade())
-				throw (Form::GradeTooLowException());
-			else
-				this->_signed = true;
-		}
-		catch (std::exception & e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
+		if (bu.getGrade() <= this->_signGrade)
+			this->_signed = true;
+		else
+			throw (Form::GradeTooLowException());
 	}
 	return ;
 }

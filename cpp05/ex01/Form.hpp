@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 15:33:17 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/23 12:38:42 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/26 16:58:54 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class Form
 		Form	& operator= (Form const &rhs);
 
 		// Member Functions
-		void	beSigned(Bureaucrat bu) throw();
+		void	beSigned(Bureaucrat const &bu) throw();
 
 		// Exceptions
 		class GradeTooHighException : public std::exception

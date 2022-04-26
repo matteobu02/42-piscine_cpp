@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 14:53:48 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/23 12:41:22 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/26 16:52:52 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@
 
 int	main(void)
 {
-	std::cout << "Invallid:" << std::endl;
-	Form	f1("null", 151, 1);
-	Form	f2("null", 15, -1);
-	Form	f3("null", 10, 15);
-
 	std::cout << std::endl << "Valid:" << std::endl;
 	Form		f4("15c", 81, 70);
 	Form		f5("b6", 81, 70);
