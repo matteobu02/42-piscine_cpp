@@ -2,7 +2,7 @@ NAME		=	test
 
 CPP			=	c++
 
-CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I $(INCLUDES)
+CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98 -g -I $(INCLUDES)
 
 INCLUDES	=	./includes
 

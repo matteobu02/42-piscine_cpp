@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 12:12:34 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/25 15:50:10 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/27 14:23:15 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm	&operator= (ShrubberyCreationForm const &rhs);
 
 		// Member Functions
-		void	execute(Bureaucrat const &executor) const throw();
+		void	doTheThing(void) const;
 
 	private:
 		std::string	_target;

@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 16:42:47 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/25 17:45:29 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/27 16:16:47 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Intern
 		Intern	&operator= (Intern const &rhs);
 
 		// Member Function
-		AForm	*makeForm(std::string formName, std::string formTarget) const throw();
+		AForm	*makeForm(std::string formName, std::string formTarget) const;
 
 		// Exceptions
 		class FormDoesNotExistException : public std::exception

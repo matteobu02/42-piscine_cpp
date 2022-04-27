@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 13:25:41 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/22 12:45:46 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/27 12:19:20 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ class Bureaucrat
 		Bureaucrat	&operator= (Bureaucrat const &rhs);
 
 		// Member Functions
-		void	increment(void) throw();
-		void	decrement(void) throw();
+		void	increment(void) throw(Bureaucrat::GradeTooHighException());
+		void	decrement(void) throw(Bureaucrat::GradeTooLowException());
 		void	signForm(Form &form) const;
 
 		// Exceptions

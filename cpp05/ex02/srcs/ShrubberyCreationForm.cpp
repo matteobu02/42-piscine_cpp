@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 14:59:21 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/25 16:12:42 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/27 14:22:28 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,33 +71,18 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator= (ShrubberyCreationForm c
 // Member Functions //
 //////////////////////
 
-void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const throw()
+void	ShrubberyCreationForm::doTheThing(void) const
 {
-	try
-	{
-		if (executor.getGrade() > this->getExecGrade())
-			throw (AForm::GradeTooLowException());
-		else if (!this->getSigned())
-			throw (AForm::FormNotSignedException());
-		else
-		{
-			std::ofstream	ofs(this->_target + "_shrubbery");
-			ofs << "       _-_" << std::endl; // ---> https://ascii.co.uk/art/tree
-			ofs << "    /~~   ~~\\" << std::endl;
-			ofs << " /~~         ~~\\" << std::endl;
-			ofs << "{               }" << std::endl;
-			ofs << " \\  _-     -_  /" << std::endl;
-			ofs << "   ~  \\\\ //  ~" << std::endl;
-			ofs << "_- -   | | _- _" << std::endl;
-			ofs << "  _ -  | |   -_" << std::endl;
-			ofs << "      // \\\\" << std::endl;
-			ofs.close();
-		}
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << this->getName() << "-err: " << e.what() << std::endl;
-	}
+	std::ofstream	ofs(this->_target + "_shrubbery");
+	ofs << "       _-_" << std::endl; // ---> https://ascii.co.uk/art/tree
+	ofs << "    /~~   ~~\\" << std::endl;
+	ofs << " /~~         ~~\\" << std::endl;
+	ofs << "{               }" << std::endl;
+	ofs << " \\  _-     -_  /" << std::endl;
+	ofs << "   ~  \\\\ //  ~" << std::endl;
+	ofs << "_- -   | | _- _" << std::endl;
+	ofs << "  _ -  | |   -_" << std::endl;
+	ofs << "      // \\\\" << std::endl;
 	return ;
 }
 

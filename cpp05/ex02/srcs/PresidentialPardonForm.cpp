@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 12:43:48 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/25 16:13:10 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/27 14:26:55 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,21 +71,9 @@ PresidentialPardonForm	&PresidentialPardonForm::operator= (PresidentialPardonFor
 // Member Functions //
 //////////////////////
 
-void	PresidentialPardonForm::execute(Bureaucrat const &executor) const throw()
+void	PresidentialPardonForm::doTheThing(void) const
 {
-	try
-	{
-		if (executor.getGrade() > this->getExecGrade())
-			throw (AForm::GradeTooLowException());
-		else if (!this->getSigned())
-			throw (AForm::FormNotSignedException());
-		else
-			std::cout << this->_target << " was pardoned by Zaphod Beeblebrox." << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << this->getName() << "-err: " << e.what() << std::endl;
-	}
+	std::cout << this->_target << " was pardoned by Zaphod Beeblebrox." << std::endl;
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 13:25:41 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/25 15:50:12 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/27 14:52:27 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Bureaucrat
 		// Destructor
 		virtual ~Bureaucrat(void);
 
-		// Getters
+		// Getters - Setters
 		std::string	getName(void) const;
 		int			getGrade(void) const;
 
@@ -38,20 +38,20 @@ class Bureaucrat
 		Bureaucrat	&operator= (Bureaucrat const &rhs);
 
 		// Member Functions
-		void	increment(void) throw();
-		void	decrement(void) throw();
+		void	increment(void);
+		void	decrement(void);
 		void	signForm(AForm &form) const;
 		void	executeForm(AForm const &form) const;
 
 		// Exceptions
 		class GradeTooHighException : public std::exception
 		{
-			char const	* what(void) const throw();
+			char const	*what(void) const throw();
 		};
 
 		class GradeTooLowException : public std::exception
 		{
-			char const	* what(void) const throw();
+			char const	*what(void) const throw();
 		};
 
 	private:

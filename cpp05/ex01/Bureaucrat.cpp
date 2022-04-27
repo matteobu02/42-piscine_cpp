@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 14:10:35 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/26 17:15:13 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/27 13:09:52 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,12 @@ Bureaucrat::Bureaucrat(void) : _name("default"), _grade(150)
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-	try
-	{
-		if (this->getGrade() > 150)
-			throw (Bureaucrat::GradeTooHighException());
-		else if (this->getGrade() < 1)
-			throw (Bureaucrat::GradeTooLowException());
-		else
-			std::cout << *this << std::endl;
-	}
+	if (this->getGrade() > 150)
+		throw (Bureaucrat::GradeTooHighException());
+	else if (this->getGrade() < 1)
+		throw (Bureaucrat::GradeTooLowException());
+	else
+		std::cout << *this << std::endl;
 	return ;
 }
 
@@ -49,6 +46,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const &cpy) : _name(cpy._name), _grade(cpy._gr
 
 Bureaucrat::~Bureaucrat(void)
 {
+	std::cout << "Bureaucrat: " << this->_name << " was fired." << std::endl;
 }
 
 ///////////////////////
@@ -83,29 +81,23 @@ Bureaucrat	& Bureaucrat::operator= (Bureaucrat const &rhs)
 
 void	Bureaucrat::increment(void) throw(Bureaucrat::GradeTooHighException())
 {
-	try
-	{
-		if (this->_grade == 1)
-			throw (Bureaucrat::GradeTooHighException());
-		else
-			this->_grade -= 1;
-	}
+	if (this->_grade == 1)
+		throw (Bureaucrat::GradeTooHighException());
+	else
+		this->_grade -= 1;
 	return ;
 }
 
 void	Bureaucrat::decrement(void) throw(Bureaucrat::GradeTooLowException())
 {
-	try
-	{
-		if (this->_grade == 150)
-			throw (Bureaucrat::GradeTooLowException());
-		else
-			this->_grade += 1;
-	}
+	if (this->_grade == 150)
+		throw (Bureaucrat::GradeTooLowException());
+	else
+		this->_grade += 1;
 	return ;
 }
 
-void	Bureaucrat::signForm(Form const &form) const
+void	Bureaucrat::signForm(Form &form) const
 {
 	if (form.getSigned())
 	{
@@ -121,8 +113,8 @@ void	Bureaucrat::signForm(Form const &form) const
 		}
 		else
 		{
-			std::cout << this->_name << "couldn't sign " << form.getName();
-			std::cout << "because they don't have the appropriate grade" << std::endl;
+			std::cout << this->_name << " couldn't sign " << form.getName();
+			std::cout << " because they don't have the appropriate grade" << std::endl;
 		}
 	}
 	return ;

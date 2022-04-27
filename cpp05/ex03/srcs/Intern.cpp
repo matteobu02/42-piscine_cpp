@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:19:23 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/25 17:57:14 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/27 16:16:55 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,21 @@ Intern	&Intern::operator= (Intern const &rhs)
 /////////////////////
 // Member Function //
 /////////////////////
+static AForm	*newShrubbery(std::string target)
+{
+	return (new ShrubberyCreationForm(target));
+}
 
-AForm	*Intern::makeForm(std::string formName, std::string formTarget) const throw()
+static AForm	*newRobotmyRequest(std::string target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+static AForm	*newPresidentialPardon(std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}
+AForm	*Intern::makeForm(std::string formName, std::string formTarget) const
 {
 	std::string	tab[3] = {
 		"shrubbery creation",
@@ -63,31 +76,17 @@ AForm	*Intern::makeForm(std::string formName, std::string formTarget) const thro
 		"presidential pardon"
 	};
 
-	int	i;
-	for (i = 0; i < 3; i++)
+	AForm*	(*fctPtrs[3])(std::string target) = {
+		&newShrubbery,
+		&newRobotmyRequest,
+		&newPresidentialPardon
+	};
+
+	for (int i = 0; i < 3; i++)
 		if (tab[i] == formName)
-			break ;
-	try
-	{	
-		switch (i)
-		{
-			case (0):
-				std::cout << "Intern creates " << tab[i] << " form" << std::endl;
-				return (new ShrubberyCreationForm(formTarget));
-			case (1):
-				std::cout << "Intern creates " << tab[i] << " form" << std::endl;
-				return (new RobotomyRequestForm(formTarget));
-			case (2):
-				std::cout << "Intern creates " << tab[i] << " form" << std::endl;
-				return (new PresidentialPardonForm(formTarget));
-			default:
-				throw (Intern::FormDoesNotExistException());
-		}
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+			return ((*fctPtrs[i])(formTarget));
+
+	throw (Intern::FormDoesNotExistException());
 	return (NULL);
 }
 
@@ -99,3 +98,7 @@ char const	*Intern::FormDoesNotExistException::what(void) const throw()
 {
 	return ("The requested form doesn't exist");
 }
+
+/////////////////
+/////////////////
+

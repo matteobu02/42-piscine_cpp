@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 15:33:17 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/25 16:34:44 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/27 14:35:28 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ class AForm
 		AForm	&operator= (AForm const &rhs);
 
 		// Member Functions
-		void			beSigned(Bureaucrat const &bu) throw();
-		virtual void	execute(Bureaucrat const &executor) const throw() = 0;
+		void			beSigned(Bureaucrat const &bu);
+		void 			execute(Bureaucrat const &executor) const; 
+		void virtual	doTheThing(void) const = 0;
 
 		// Exceptions
 		class GradeTooHighException : public std::exception
@@ -50,6 +51,11 @@ class AForm
 		};
 
 		class GradeTooLowException : public std::exception
+		{
+			char const	*what(void) const throw();
+		};
+
+		class FormAlreadySignedException : public std::exception
 		{
 			char const	*what(void) const throw();
 		};

@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 16:10:28 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/25 16:35:03 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/27 14:36:05 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,14 @@ AForm::AForm(void) : _name("default"), _signed(false), _signGrade(75), _execGrad
 AForm::AForm(std::string name, int signGrade, int execGrade)
 	: _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade)
 {
-	try
-	{
-		if (signGrade > 150 || execGrade > 150)
-			throw (AForm::GradeTooHighException());
-		else if (signGrade < 1 || execGrade < 1)
-			throw (AForm::GradeTooLowException());
-		else if (signGrade < execGrade)
-			throw (AForm::GradeTooHighException());
-		else
-			std::cout << "AForm: " << *this << std::endl;
-	}
-	catch (std::exception & e)
-	{
-		std::cerr << this->getName() << "-err: " << e.what() << std::endl;
-	}
+	if (signGrade > 150 || execGrade > 150)
+		throw (AForm::GradeTooHighException());
+	else if (signGrade < 1 || execGrade < 1)
+		throw (AForm::GradeTooLowException());
+	else if (signGrade < execGrade)
+		throw (AForm::GradeTooHighException());
+	else
+		std::cout << "AForm: " << *this << std::endl;
 	return ;
 }
 
@@ -91,7 +84,9 @@ int			AForm::getExecGrade(void) const
 
 AForm	&AForm::operator= (AForm const &rhs)
 {
-	(void)rhs;
+	if (&rhs != this)
+		this->_signed = rhs._signed;
+
 	return (*this);
 }
 
@@ -99,22 +94,28 @@ AForm	&AForm::operator= (AForm const &rhs)
 // Member Functions //
 //////////////////////
 
-void	AForm::beSigned(Bureaucrat const &bu) throw()
+void	AForm::beSigned(Bureaucrat const &bu)
 {
 	if (!this->_signed)
 	{
-		try
-		{
-			if (bu.getGrade() > this->getSignGrade())
-				throw (AForm::GradeTooLowException());
-			else
-				this->_signed = true;
-		}
-		catch (std::exception & e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
+		if (bu.getGrade() <= this->_signGrade)
+			this->_signed = true;
+		else
+			throw (AForm::GradeTooLowException());
 	}
+	else
+		throw (AForm::FormAlreadySignedException());
+	return ;
+}
+
+void	AForm::execute(Bureaucrat const &executor) const
+{
+	if (!this->_signed)
+		throw (AForm::FormNotSignedException());
+	else if (this->_execGrade < executor.getGrade())
+		throw (AForm::GradeTooLowException());
+	else
+		this->doTheThing();
 	return ;
 }
 
@@ -124,12 +125,17 @@ void	AForm::beSigned(Bureaucrat const &bu) throw()
 
 char const	*AForm::GradeTooHighException::what(void) const throw()
 {
-	return ("The form's grade is too high.");
+	return ("Grade too high for this form.");
 }
 
 char const	*AForm::GradeTooLowException::what(void) const throw()
 {
-	return ("The form's grade is too low.");
+	return ("Grade too low for this form.");
+}
+
+char const	*AForm::FormAlreadySignedException::what(void) const throw()
+{
+	return ("Form already signed: it cannot be signed again.");
 }
 
 char const	*AForm::FormNotSignedException::what(void) const throw()

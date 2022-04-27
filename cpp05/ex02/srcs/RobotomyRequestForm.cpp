@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:27:15 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/25 16:13:01 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/27 14:25:50 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,28 +71,15 @@ RobotomyRequestForm	&RobotomyRequestForm::operator= (RobotomyRequestForm const &
 // Member Functions //
 //////////////////////
 
-void	RobotomyRequestForm::execute(Bureaucrat const &executor) const throw()
+void	RobotomyRequestForm::doTheThing(void) const
 {
-	try
-	{
-		if (executor.getGrade() > this->getExecGrade())
-			throw (AForm::GradeTooLowException());
-		else if (!this->getSigned())
-			throw (AForm::FormNotSignedException());
-		else
-		{
-			std::cout << "VRRRRRRRRRR... " << std::endl;
-			if (rand() % 2)
-				std::cout << this->getName() << " was robotomized.";
-			else
-				std::cout << "Robotomization failed...";
-			std::cout << std::endl;
-		}
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << this->getName() << "-err: " << e.what() << std::endl;
-	}
+	std::cout << "VRRRRRRRRRR... " << std::endl;
+	if (rand() % 2)
+		std::cout << this->getName() << " was robotomized.";
+	else
+		std::cout << "Robotomization failed...";
+	std::cout << std::endl;
+
 	return ;
 }
 

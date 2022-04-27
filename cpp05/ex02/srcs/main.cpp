@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 14:53:48 by mbucci            #+#    #+#             */
-/*   Updated: 2022/04/25 16:38:40 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/04/27 15:20:25 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,14 @@ int	main(void)
 
 		std::cout << std::endl;
 		b1.signForm(f1);
-		b1.executeForm(f1);
+		try
+		{
+			b1.executeForm(f1);
+		}
+		catch (std::exception &e)
+		{
+			std::cerr << "err: " << e.what() << std::endl;
+		}
 		f2.beSigned(b2);
 		b2.signForm(f2);
 		b2.executeForm(f2);
@@ -47,7 +54,6 @@ int	main(void)
 
 		std::cout << std::endl;
 		b1.signForm(f1);
-		b1.executeForm(f1);
 		f2.beSigned(b2);
 		b2.signForm(f2);
 		b2.executeForm(f2);
@@ -65,7 +71,6 @@ int	main(void)
 
 		std::cout << std::endl;
 		b1.signForm(f1);
-		b1.executeForm(f1);
 		f2.beSigned(b2);
 		b2.signForm(f2);
 		b2.executeForm(f2);
