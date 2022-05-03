@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.cpp                                          :+:      :+:    :+:   */
+/*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:20:22 by mbucci            #+#    #+#             */
-/*   Updated: 2022/05/03 14:53:49 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/05/03 17:24:37 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,7 @@ template <typename T>
 Array<T>::Array(unsigned int n) : _size(n)
 {
 	if (this->_size)
-	{
 		this->_array = new T [this->_size];
-		for (unsigned int i = 0; i < this->_size; i++)
-			this->_array[i] = 0;
-	}
 	else
 		this->_array = NULL;
 	return ;
@@ -66,15 +62,18 @@ Array<T>::~Array(void)
 template <typename T>
 Array<T>	&Array<T>::operator= (Array<T> const &rhs)
 {
-	if (this->_array)
-		delete [] this->_array;
-
-	this->_size = rhs._size;
-	if (this->_size)
+	if (this != *rhs)
 	{
-		this->_array = new T [this->_size];
-		for (unsigned int i = 0; i < this->_size; i++)
-			this->_array[i] = rhs._array[i];
+		if (this->_array)
+			delete [] this->_array;
+	
+		this->_size = rhs._size;
+		if (this->_size)
+		{
+			this->_array = new T [this->_size];
+			for (unsigned int i = 0; i < this->_size; i++)
+				this->_array[i] = rhs._array[i];
+		}
 	}
 	return (*this);
 }

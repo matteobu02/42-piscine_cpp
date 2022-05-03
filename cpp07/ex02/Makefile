@@ -4,8 +4,7 @@ CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 CC			=	c++
 
-SRCS		=	main.cpp	\
-				Array.cpp
+SRCS		=	main.cpp
 
 OBJS		=	$(SRCS:.cpp=.o)
 

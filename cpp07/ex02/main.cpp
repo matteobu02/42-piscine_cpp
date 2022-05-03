@@ -6,13 +6,14 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:55:38 by mbucci            #+#    #+#             */
-/*   Updated: 2022/05/03 15:32:55 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/05/03 17:28:16 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
 #include "Array.hpp"
-#include "Array.cpp"
+#include "Array.tpp"
 
 int main(void)
 {
@@ -50,6 +51,15 @@ int main(void)
 		{
 			std::cerr << e.what() << std::endl;
 		}
+	}
+	std::cout << std::endl << "test 3:" << std::endl;
+	{
+		Array<std::string>	array3(3);
+
+		for (int i = 0; i < 3; i++)
+			array3[i] = "github is bad";
+		for (int i = 0; i < 3; i++)
+			std::cout << "array3[" << i << "] = " << array3[i] << std::endl;
 	}
 	//system("leaks test");
 	return 0;
