@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 12:17:09 by mbucci            #+#    #+#             */
-/*   Updated: 2022/05/02 13:51:54 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/05/03 14:39:18 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ class Conv
 
 		class InvalidInputException : public std::exception
 		{
-			char const	*what(void) const throw();
+			public:
+				char const	*what(void) const throw();
 		};
 
 		class NonDisplayableException : public std::exception
