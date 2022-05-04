@@ -6,7 +6,7 @@
 /*   By: mbucci <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 01:26:38 by mbucci            #+#    #+#             */
-/*   Updated: 2022/05/03 13:48:49 by mbucci           ###   ########.fr       */
+/*   Updated: 2022/05/04 11:42:41 by mbucci           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ template <typename T>
 class Array
 {
 	public:
+		Array<T>(void);
 		Array<T>(Array<T> const &cpy);
 		Array<T>(unsigned int n);
 
@@ -35,8 +36,6 @@ class Array
 		};
 
 	private:
-		Array<T>(void);
-
 		unsigned int	_size;
 		T				*_array;
 };
