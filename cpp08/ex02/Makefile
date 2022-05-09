@@ -1,11 +1,10 @@
-NAME		=	ex01
+NAME		=	test
 
 CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 CC			=	c++
 
-SRCS		=	main.cpp	\
-				Span.cpp
+SRCS		=	main.cpp
 
 OBJS		=	$(SRCS:.cpp=.o)
 
